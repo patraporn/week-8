@@ -20,18 +20,27 @@ namespace twozerofoureight
             InitializeComponent();
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
+            model.AttachObserver(TwoZeroFourEightScoreView);
             controller = new TwoZeroFourEightController();
             controller.AddModel(model);
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
-           
+            TwoZeroFourEightScoreView.Show();
         }
 
         public void Notify(Model m)
         {
+            
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
-            SummationScore(((TwoZeroFourEightModel)m).GetBoard());
+            int x = (((TwoZeroFourEightModel)m).SummationScore());
+            lblScore.Text = Convert.ToString(x);
+
+            /*int X(((TwoZeroFourEightModel)m).SummationScore());
+            lblScore.Text = x.ToString();
+            TwoZeroFourEightScoreView.lblScore1.Text = x.ToString();*/
             
         }
+
+
 
         private void UpdateTile(Label l, int i)
         {
@@ -61,22 +70,9 @@ namespace twozerofoureight
             }
         }
 
-        private void SummationScore(int[,] board)
-        {
+       
 
-            int score = 0;
-
-            for(int x =0 ; x < 4 ; x++)
-            {
-                for(int y = 0 ; y < 4 ; y++)
-                {
-                    score = score + board[x, y];
-                }
-            }
-            lblScore.Text = Convert.ToString(score);
-            TwoZeroFourEightScoreView.lblScore1.Text = Convert.ToString(score);
-
-        }
+      
 
         private void UpdateBoard(int[,] board)
         {
@@ -144,8 +140,7 @@ namespace twozerofoureight
 
         private void TwoZeroFourEightView_Load(object sender, EventArgs e)
         {
-            TwoZeroFourEightScoreView.Show();
-
+           
         }
 
     }
