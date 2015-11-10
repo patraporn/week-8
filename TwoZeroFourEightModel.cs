@@ -12,11 +12,12 @@ namespace twozerofoureight
         protected int[,] board;
         protected Random rand;
        
-        protected int score = 0;
+        //protected int score = 0;
 
 
         public int SummationScore()
         {
+            int score = 0;
 
             for (int x = 0; x < 4; x++)
             {
