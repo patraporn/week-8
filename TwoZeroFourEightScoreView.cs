@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace twozerofoureight
 {
-    public partial class TwoZeroFourEightScoreView : Form
+    public partial class TwoZeroFourEightScoreView : Form,View
     {
         public TwoZeroFourEightScoreView()
         {
@@ -27,6 +27,15 @@ namespace twozerofoureight
         private void TwoZeroFourEightScoreView_Load(object sender, EventArgs e)
         {
 
+        }
+        public void cr_score(int num)
+        {
+            
+        }
+        public void Notify(Model m)
+        {
+            int x = (((TwoZeroFourEightModel)m).SummationScore());
+            lblScore1.Text = Convert.ToString(x);
         }
     }
 }
